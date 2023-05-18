@@ -1,7 +1,8 @@
 import { Outlet } from "react-router-dom";
 import NavigationBar from "../pages/Shared/NavigationBar/NavigationBar";
-import { Footer } from "flowbite-react";
 import Header from "../pages/Shared/Header/Header";
+import PageFooter from "../pages/Shared/PageFooter/PageFooter";
+
 
 
 const Main = () => {
@@ -10,7 +11,7 @@ const Main = () => {
             <Header />
             <NavigationBar />
             <Outlet />
-            <Footer />
+            <PageFooter />
         </div>
     );
 };
