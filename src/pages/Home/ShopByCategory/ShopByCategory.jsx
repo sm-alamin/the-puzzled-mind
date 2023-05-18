@@ -22,7 +22,7 @@ const ShopByCategory = () => {
       <div className="w-1/4">
         <Tabs selectedIndex={activeTab} onSelect={handleTabSelect}>
           <TabList>
-            <Tab className="bg-slate-200 rounded-full w-32 h-32 flex flex-col items-center justify-center cursor-pointer">
+            <Tab className="bg-slate-200 rounded-full w-32 h-32 flex flex-col items-center justify-center cursor-pointer shadow-custom">
               <div className="flex items-center justify-center">
                 <div className="flex items-center justify-center">
                   <BsPuzzleFill className="text-7xl" />
@@ -30,7 +30,7 @@ const ShopByCategory = () => {
               </div>
               <h3>Brain Teasers </h3>
             </Tab>
-            <Tab className="bg-slate-200 rounded-full w-32 h-32 flex flex-col items-center justify-center my-5 cursor-pointer">
+            <Tab className="bg-slate-200 rounded-full w-32 h-32 flex flex-col items-center justify-center my-5 cursor-pointer shadow-custom">
               <div className="flex items-center justify-center">
                 <div className="flex items-center justify-center">
                   <GiChessKing className="text-7xl" />
@@ -38,7 +38,7 @@ const ShopByCategory = () => {
               </div>
               <h3>Strategy</h3>
             </Tab>
-            <Tab className="bg-slate-200 rounded-full w-32 h-32 flex flex-col items-center justify-center cursor-pointer">
+            <Tab className="bg-slate-200 rounded-full w-32 h-32 flex flex-col items-center justify-center cursor-pointer shadow-custom">
               <div className="flex items-center justify-center">
                 <div className="flex items-center justify-center">
                   <GiBrain className="text-7xl" />
@@ -55,7 +55,7 @@ const ShopByCategory = () => {
             <div className="max-w-sm">
               <Card
                 imgAlt="rubbiks cube"
-                imgSrc="https://img.freepik.com/premium-photo/rubiks-cube-white_525574-12739.jpg?w=740" className="hover:-skew-y-6 hover:scale-110 hover:bg-slate-200"
+                imgSrc="https://img.freepik.com/premium-photo/rubiks-cube-white_525574-12739.jpg?w=740" className="hover:-skew-y-6 hover:scale-110 hover:bg-slate-200 shadow-custom"
               >
                 <a href="#">
                   <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
