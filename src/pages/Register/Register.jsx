@@ -61,11 +61,11 @@ const Register = () => {
           <div>
             <button
               type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-slate-400 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
               <span className="absolute left-0 inset-y-0 flex items-center pl-3">
                 <svg
-                  className="h-5 w-5 text-blue-500 group-hover:text-blue-400"
+                  className="h-5 w-5 text-slate-200 group-hover:text-blue-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   aria-hidden="true"
