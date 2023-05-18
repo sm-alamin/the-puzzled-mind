@@ -17,4 +17,6 @@
 }
 .bg-register{
     background-image: url('https://img.freepik.com/free-vector/background-line-gradient-luxury-style_483537-3308.jpg?w=826&t=st=1684403808~exp=1684404408~hmac=c5f764cb7fe7e0d54bc0a1c887ce6160d60d75ef5e702808170de6d893330b12');
+    background-size: 30% 30%;
+    background-repeat: repeat;
 }

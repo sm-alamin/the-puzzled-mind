@@ -1,8 +1,36 @@
 import './Register.css'
-
+import { AuthContext } from "../../providers/AuthProvider";
+import { useContext, useState } from 'react';
 const Register = () => {
+    const { createUser } = useContext(AuthContext);
+    const [user, setUser] = useState(null);
+    const [error, setError] = useState("");
+    const handleRegistration = (event)=> {
+        event.preventDefault();
+
+        const form = event.target;
+        const displayName = form.name.value;
+        const email = form.email.value;
+        const photoURL = form.photo.value;
+        const password = form.password.value;
+        console.log(displayName, email, password, photoURL);
+
+
+    // Create user on firebase
+    createUser(email, password, displayName, photoURL)
+    .then((result) => {
+      const createdUser = result.user;
+      console.log(createdUser);
+      setUser(createUser)
+      form.reset();
+    })
+    .catch((error) => {
+      console.log(error);
+      setError(error.message);
+    });
+};
   return (
-    <div className="min-h-screen flex items-center justify-around gap-20 bg-[#e8eaec] py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-around gap-20  py-4 px-4 sm:px-6 lg:px-8">
       <div className='w-full bg-register h-screen flex justify-center items-center'>
             <img src="/public/puzzled.png" alt="" />
       </div>
@@ -11,8 +39,9 @@ const Register = () => {
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Create a new account
           </h2>
+          <p className="text-error">{error}</p>
         </div>
-        <form className="mt-8 space-y-6">
+        <form onSubmit={handleRegistration} className="mt-8 space-y-6">
           <div className="rounded-md shadow-sm space-y-4">
             <div>
               <label htmlFor="name" className="sr-only">
@@ -56,6 +85,20 @@ const Register = () => {
                 placeholder="Password"
               />
             </div>
+            <div>
+              <label htmlFor="password" className="sr-only">
+                Photo Url
+              </label>
+              <input
+                id="photo"
+                name="photo"
+                type="url"
+                autoComplete="photo"
+                required
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm field-input field-input"
+                placeholder="Photo Url"
+              />
+            </div>
           </div>
 
           <div>
@@ -80,13 +123,13 @@ const Register = () => {
               Sign Up
             </button>
           </div>
-          <div className="flex items-center justify-center mt-4">
+          <div className="flex items-center justify-center">
             <span className="border-b border-gray-300 w-1/4"></span>
             <span className="text-gray-500 mx-2">Already have an account?{" "}</span>
             <span className="border-b border-gray-300 w-1/4"></span>
           </div>
           
-          <div className="flex justify-center mt-6">
+          <div className="flex justify-center">
             <p className="text-gray-600">
             <a href="#" className="text-blue-500 hover:text-blue-700">
                 Sign In

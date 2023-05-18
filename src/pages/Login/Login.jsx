@@ -1,4 +1,33 @@
+import { getAuth } from "firebase/auth";
+import app from "../../firebase/firebase.config";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+
 const Login = () => {
+    const [user, setUser] = useState(null);
+  const auth = getAuth(app);
+  const { signIn } = useContext(AuthContext);
+
+
+  // Custom Login
+  const handleLogin = event => {
+    event.preventDefault();
+
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+
+    signIn(email, password)
+        .then(result => {
+            const loggedUser = result.user;
+            console.log(loggedUser)
+        })
+        .catch(error => {
+          console.log(error.message)
+        })
+    
+}
   return (
     <div className="min-h-screen flex items-center justify-around gap-20 bg-[#e8eaec] py-12 px-4 sm:px-6 lg:px-8">
       <div className='w-2/3 bg-register h-screen flex justify-center items-center'>
@@ -10,22 +39,8 @@ const Login = () => {
             Login
           </h2>
         </div>
-        <form className="mt-8 space-y-6">
+        <form onSubmit={handleLogin} className="mt-8 space-y-6">
           <div className="rounded-md shadow-sm space-y-4">
-            <div>
-              <label htmlFor="name" className="sr-only">
-                Name
-              </label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                autoComplete="name"
-                required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm field-input"
-                placeholder="Name"
-              />
-            </div>
             <div>
               <label htmlFor="email" className="sr-only">
                 Email address
