@@ -1,12 +1,14 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "../pages/Shared/Navbar/Navbar";
+import NavigationBar from "../pages/Shared/NavigationBar/NavigationBar";
 import { Footer } from "flowbite-react";
+import Header from "../pages/Shared/Header/Header";
 
 
 const Main = () => {
     return (
         <div>
-            <Navbar />
+            <Header />
+            <NavigationBar />
             <Outlet />
             <Footer />
         </div>
