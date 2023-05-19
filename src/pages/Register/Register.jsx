@@ -2,7 +2,7 @@ import './Register.css'
 import { AuthContext } from "../../providers/AuthProvider";
 import { useContext, useState } from 'react';
 const Register = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser,logOut } = useContext(AuthContext);
     const [user, setUser] = useState(null);
     const [error, setError] = useState("");
     const handleRegistration = (event)=> {
@@ -21,8 +21,10 @@ const Register = () => {
     .then((result) => {
       const createdUser = result.user;
       console.log(createdUser);
-      setUser(createUser)
+      setUser(createdUser)
+      logOut();
       form.reset();
+      
     })
     .catch((error) => {
       console.log(error);

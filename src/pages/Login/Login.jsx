@@ -124,9 +124,9 @@ const Login = () => {
 
           <div className="flex justify-center mt-6">
             <p className="text-gray-600 pb-5">
-              <a href="#" className="text-blue-500 hover:text-blue-700 field-input p-3">
+              <Link to='/register' className="text-blue-500 hover:text-blue-700 field-input p-3">
                 Register
-              </a>
+              </Link>
             </p>
           </div>
         </form>
