@@ -1,15 +1,22 @@
 import { Link } from 'react-router-dom';
 import { FaRegEdit, FaRegTrashAlt } from "react-icons/fa";
 import { useEffect, useState } from 'react';
+import ToySearch from '../Search/ToySearch';
 
 const MyToys = () => {
   const [myToys, setMyToys] = useState([]);
+  const [filteredToys, setFilteredToys] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:5000/all-toys")
       .then((response) => response.json())
-      .then((data) => setMyToys(data));
+      .then((data) => {
+        setMyToys(data);
+      setFilteredToys(data);
+      });
   }, []);
+
+  
 
   return (
     <div className="flex flex-col min-h-[200px] my-20">
@@ -17,15 +24,7 @@ const MyToys = () => {
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
           <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
             <h3 className="text-center py-2 px-2 rounded bg-indigo-50 text-indigo-500 text-xl font-medium tracking-widest mx-auto">My Added Toys</h3>
-            <div className="flex justify-end p-4">
-              <input
-                type="text"
-                placeholder="Search by toy name"
-                value=''
-                onChange=''
-                className="px-4 py-2 border border-gray-300 rounded-md"
-              />
-            </div>
+            <ToySearch toys={myToys} setFilteredToys={setFilteredToys} />
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr className="text-center shadow-custom">
@@ -62,7 +61,7 @@ const MyToys = () => {
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200 table-field">
-                {myToys.map((toy) => (
+                {filteredToys.map((toy) => (
                   <tr key={toy._id}>
                     <td className="px-6 py-4 whitespace-normal text-sm text-gray-500 text-center hover:scale-105 hover:-skew-x-12 hover:text-gray-600">
                       <div className="text-sm text-gray-500">
