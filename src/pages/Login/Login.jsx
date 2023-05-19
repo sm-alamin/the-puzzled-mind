@@ -39,7 +39,7 @@ const Login = () => {
   return (
     <div className="min-h-screen flex items-center justify-around gap-20 bg-[#e8eaec] py-12 px-4 sm:px-6 lg:px-8">
       <div className="w-2/3 bg-register h-screen flex justify-center items-center">
-        <img src="/public/puzzled.png" alt="" />
+        <img src="/puzzled.png" alt="" />
       </div>
       <div className="max-w-md w-full space-y-8 shadow-custom px-6">
         <div>

@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 import { FaRegEdit, FaRegTrashAlt } from "react-icons/fa";
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import ToySearch from '../Search/ToySearch';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const MyToys = () => {
+  const {user} = useContext(AuthContext);
   const [myToys, setMyToys] = useState([]);
   const [filteredToys, setFilteredToys] = useState([]);
 
@@ -11,8 +13,9 @@ const MyToys = () => {
     fetch("http://localhost:5000/all-toys")
       .then((response) => response.json())
       .then((data) => {
-        setMyToys(data);
-      setFilteredToys(data);
+        const filtered = data.filter(toy => toy.sellerEmail == user?.email);
+        setMyToys(filtered);
+      setFilteredToys(filtered);
       });
   }, []);
 

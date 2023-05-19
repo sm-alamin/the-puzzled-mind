@@ -34,7 +34,7 @@ const Register = () => {
   return (
     <div className="min-h-screen flex items-center justify-around gap-20  py-4 px-4 sm:px-6 lg:px-8">
       <div className='w-full bg-register h-screen flex justify-center items-center'>
-            <img src="/public/puzzled.png" alt="" />
+            <img src="/puzzled.png" alt="" />
       </div>
       <div className="max-w-md w-full space-y-8 shadow-custom px-6">
         <div>
