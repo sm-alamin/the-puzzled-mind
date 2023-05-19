@@ -24,7 +24,7 @@ const AllToy = () => {
             <h3 className="text-center py-2 px-2 rounded bg-indigo-50 text-indigo-500 text-xl font-medium tracking-widest mx-auto">
               All toys
             </h3>
-            <div className="flex justify-end p-4">
+            {/* <div className="flex justify-end p-4">
               <input
                 type="text"
                 placeholder="Search by toy name"
@@ -32,7 +32,7 @@ const AllToy = () => {
                 onChange=""
                 className="px-4 py-2 border border-gray-300 rounded-md"
               />
-            </div>
+            </div> */}
 
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
