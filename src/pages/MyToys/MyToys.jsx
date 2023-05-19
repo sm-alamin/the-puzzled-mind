@@ -1,5 +1,6 @@
+import { Link } from 'react-router-dom';
 import './MyToy.css'
-
+import { FaRegEdit, FaRegTrashAlt } from "react-icons/fa";
 
 const MyToys = () => {
     return (
@@ -76,6 +77,12 @@ const MyToys = () => {
                   >
                     Detail Description
                   </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3  text-xs font-medium text-gray-500 uppercase tracking-wider text-center"
+                  >
+                    Action
+                  </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200 table-field">
@@ -107,9 +114,15 @@ const MyToys = () => {
                   <td className="px-6 py-4 whitespace-normal text-sm text-gray-500 text-center hover:scale-125 hover:-skew-x-12 hover:text-gray-600">
                     <div className="text-sm text-gray-500">30</div>
                   </td>
-                  <td className="px-6 py-4 whitespace-normal text-sm font-medium text-center hover:scale-105 hover:-skew-x-12 hover:text-gray-600">
-                    <div className="text-sm text-blue-400 text-center detail-description">
+                  <td className="px-6 py-4 whitespace-normal text-sm font-xs text-center hover:scale-105 hover:-skew-x-12 hover:text-gray-600">
+                    <div className="text-sm text-gray-500 text-center detail-description">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem nihil tempore alias, debitis pariatur eum nobis exercitationem 
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-normal text-sm font-medium text-center hover:text-gray-600">
+                    <div className="text-sm text-blue-400 text-center flex gap-5">
+                        <Link to='/'><FaRegEdit className='font-bold text-3xl cursor-pointer'/> </Link>
+                        <Link to='/'><FaRegTrashAlt className='font-bold text-red-400 text-3xl cursor-pointer'/> </Link>
                     </div>
                   </td>
                 </tr>

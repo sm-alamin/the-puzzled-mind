@@ -2,15 +2,16 @@ import { getAuth } from "firebase/auth";
 import app from "../../firebase/firebase.config";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import { BsGoogle } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const Login = () => {
-    const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null);
   const auth = getAuth(app);
-  const { signIn } = useContext(AuthContext);
-
+  const { signIn, signInWithGoogle } = useContext(AuthContext);
 
   // Custom Login
-  const handleLogin = event => {
+  const handleLogin = (event) => {
     event.preventDefault();
 
     const form = event.target;
@@ -19,19 +20,26 @@ const Login = () => {
     console.log(email, password);
 
     signIn(email, password)
-        .then(result => {
-            const loggedUser = result.user;
-            console.log(loggedUser)
-        })
-        .catch(error => {
-          console.log(error.message)
-        })
-    
-}
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+  //Google login
+  const handleGoogleLogin = () => {
+    signInWithGoogle()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => console.log(error));
+  };
   return (
     <div className="min-h-screen flex items-center justify-around gap-20 bg-[#e8eaec] py-12 px-4 sm:px-6 lg:px-8">
-      <div className='w-2/3 bg-register h-screen flex justify-center items-center'>
-            <img src="/public/puzzled.png" alt="" />
+      <div className="w-2/3 bg-register h-screen flex justify-center items-center">
+        <img src="/public/puzzled.png" alt="" />
       </div>
       <div className="max-w-md w-full space-y-8 shadow-custom px-6">
         <div>
@@ -95,16 +103,30 @@ const Login = () => {
           </div>
           <div className="flex items-center justify-center mt-4">
             <span className="border-b border-gray-300 w-1/4"></span>
-            <span className="text-gray-500 mx-2">Need an account?{" "}</span>
+            <span className="text-gray-500 mx-2">Sign In With </span>
             <span className="border-b border-gray-300 w-1/4"></span>
           </div>
-          
+
           <div className="flex justify-center mt-6">
             <p className="text-gray-600">
-            <a href="#" className="text-blue-500 hover:text-blue-700">
+              <button onClick={handleGoogleLogin} className="text-blue-500 hover:text-blue-700">
+                <div className="flex flex-col justify-center items-center p-3 rounded-full w-24 h-24 bg-slate-400 text-white shadow-custom">
+                <BsGoogle /> <span>Google</span>
+                </div>
+              </button>
+            </p>
+          </div>
+          <div className="flex items-center justify-center mt-4">
+            <span className="border-b border-gray-300 w-1/4"></span>
+            <span className="text-gray-500 mx-2">Need an account? </span>
+            <span className="border-b border-gray-300 w-1/4"></span>
+          </div>
+
+          <div className="flex justify-center mt-6">
+            <p className="text-gray-600 pb-5">
+              <a href="#" className="text-blue-500 hover:text-blue-700 field-input p-3">
                 Register
               </a>
-             
             </p>
           </div>
         </form>
