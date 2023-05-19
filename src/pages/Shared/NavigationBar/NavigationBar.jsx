@@ -1,15 +1,11 @@
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
-import { Link } from "react-router-dom";
-
+import { NavLink } from "react-router-dom";
+import "./NavigationBar.css";
 const NavigationBar = () => {
   return (
     <Navbar fluid={true} rounded={true}>
       <Navbar.Brand href="https://flowbite.com/">
-        <img
-          src="/puzzled.png"
-          className="mr-3 h-6 sm:h-9"
-          alt="Logo"
-        />
+        <img src="/puzzled.png" className="mr-3 h-6 sm:h-9" alt="Logo" />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
           The Puzzled Mind
         </span>
@@ -41,13 +37,46 @@ const NavigationBar = () => {
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>
-        <Navbar.Link active={true}>
-        <Link to="/">Home</Link>
-        </Navbar.Link>
-        <Navbar.Link><Link to="/all-toys">All Toys</Link></Navbar.Link>
-        <Navbar.Link><Link to="/my-toys">My Toys</Link></Navbar.Link>
-        <Navbar.Link><Link to="/add-toy">Add a Toy</Link></Navbar.Link>
-        <Navbar.Link><Link to="/blogs">Blogs</Link></Navbar.Link>
+        <NavLink
+          to="/"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "active" : ""
+          }
+        >
+          Home
+        </NavLink>
+        <NavLink
+          to="/all-toys"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "active" : ""
+          }
+        >
+          All Toys
+        </NavLink>
+        <NavLink
+          to="/my-toys"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "active" : ""
+          }
+        >
+          My Toys
+        </NavLink>
+        <NavLink
+          to="/add-toy"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "active" : ""
+          }
+        >
+          Add a Toy
+        </NavLink>
+        <NavLink
+          to="/blogs"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "active" : ""
+          }
+        >
+          Blogs
+        </NavLink>
       </Navbar.Collapse>
     </Navbar>
   );
