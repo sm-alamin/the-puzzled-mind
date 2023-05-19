@@ -88,7 +88,7 @@ const AllToy = () => {
                     <div className="text-sm text-gray-500">30</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-center hover:scale-125 hover:-skew-x-12 hover:text-gray-600">
-                    <div className="text-sm text-blue-400 text-center"><Link to='/'>Details</Link></div>
+                    <div className="text-sm text-blue-400 text-center"><Link to='/toy-details'>Details</Link></div>
                   </td>
                 </tr>
               </tbody>
