@@ -1,9 +1,28 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 
 const EditMyToy = () => {
+    const [toyInfo, setToyInfo] = useState(
+        {
+            price: "",
+            availableQuantity: "",
+            description: ""
+          }
+    );
     const {id} = useParams();
     console.log(id)
+    useEffect(()=> {
+        fetch(`http://localhost:5000/all-toys/${id}`)
+        .then(res=>res.json())
+        .then(data=> {
+            setToyInfo({
+                price: data.price,
+                availableQuantity: data.availableQuantity,
+                description: data.description,
+              });
+        })
+    },[id])
     const handleUpdateToy = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -29,7 +48,7 @@ const EditMyToy = () => {
         .then(res=> res.json())
         .then(data=> {
           console.log(data)
-          if(data.insertedId){
+          if(data.modifiedCount > 0){
             alert("toy is updated successfully")
           }
         })
@@ -82,6 +101,7 @@ const EditMyToy = () => {
             id="price"
             name="price"
             placeholder="Write Price of Toy"
+            defaultValue={toyInfo.price}
             required
             className="mt-1 block  field-input  w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
           />
@@ -97,6 +117,7 @@ const EditMyToy = () => {
             type="number"
             id="quantity"
             name="quantity"
+            defaultValue={toyInfo.availableQuantity}
             required
             placeholder="Write Available Quantity"
             className="mt-1 block  field-input  w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
@@ -114,6 +135,7 @@ const EditMyToy = () => {
             id="description"
             name="description"
             placeholder="Write Toy Detail Description"
+            defaultValue={toyInfo.description}
             required
             rows="4"
             className="mt-1 block  field-input  w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
