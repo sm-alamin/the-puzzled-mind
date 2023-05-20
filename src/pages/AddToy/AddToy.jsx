@@ -157,8 +157,8 @@ const AddToy = () => {
             <option value="Select a sub-category" disabled>
               Select a sub-category
             </option>
-            <option value="board">Board</option>
-            <option value="brain">Brain Treasers</option>
+            <option value="strategy">Strategy</option>
+            <option value="brain">Brain Teasers</option>
             <option value="puzzle">Puzzle</option>
           </select>
         </div>
