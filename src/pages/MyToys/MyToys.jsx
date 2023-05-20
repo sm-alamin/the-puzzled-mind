@@ -19,6 +19,23 @@ const MyToys = () => {
       });
   }, []);
 
+  const manageDelete = (id)=> {
+    const confirmation = confirm("Are you sure to delete")
+    if(confirmation) {
+      fetch(`http://localhost:5000/all-toys/${id}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.deletedCount > 0) {
+                        alert('deleted successful');
+                        const remaining = myToys.filter(toy => toy._id !== id);
+                        setFilteredToys(remaining);
+                    }
+                })
+    }
+  }
   
 
   return (
@@ -99,12 +116,12 @@ const MyToys = () => {
                     </td>
                     <td className="px-6 py-4 whitespace-normal text-sm font-medium text-center hover:text-gray-600">
                       <div className="text-sm text-blue-400 text-center flex gap-5">
-                        <Link to="/">
+                        <button >
                           <FaRegEdit className="font-bold text-3xl cursor-pointer" />{" "}
-                        </Link>
-                        <Link to="/">
+                        </button>
+                        <button onClick={() => manageDelete(toy._id)}>
                           <FaRegTrashAlt className="font-bold text-red-400 text-3xl cursor-pointer" />{" "}
-                        </Link>
+                        </button>
                       </div>
                     </td>
                   </tr>
