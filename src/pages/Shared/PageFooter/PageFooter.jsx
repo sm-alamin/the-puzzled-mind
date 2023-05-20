@@ -14,7 +14,7 @@ const PageFooter = () => {
     <Footer container={true} className="mt-12">
       <div className="w-full">
         <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
-          <div className="flex justify-center items-center gap-24">
+          <div className="flex flex-col lg:flex-row justify-center items-center gap-6 lg:gap-24">
             <div className="flex justify-center items-center gap-10">
               <div className="mx-auto">
                 <img
@@ -49,7 +49,7 @@ const PageFooter = () => {
               </Footer.LinkGroup>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
+          <div className="grid grid-cols-2 gap-8 mt-5 sm:mt-4 sm:grid-cols-3 sm:gap-6">
             <div>
               <Footer.Title title="INFORMATION" />
               <Footer.LinkGroup col={true}>
@@ -82,8 +82,8 @@ const PageFooter = () => {
           </div>
         </div>
         <Footer.Divider />
-        <div className="w-full sm:flex sm:items-center sm:justify-between bg-trend-footer px-2">
-          <Footer.Copyright className="text-white text-2xl" href="#" by="The Puzzled Mind™" year={2023} />
+        <div className="w-full flex flex-col sm:flex sm:flex-row sm:items-center sm:justify-between bg-trend-footer px-2">
+          <Footer.Copyright className="text-white text-2xl pt-8" href="#" by="The Puzzled Mind™" year={2023} />
           <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
             <Footer.Icon className="text-white" href="#" icon={BsFacebook} />
             <Footer.Icon className="text-white" href="#" icon={BsInstagram} />

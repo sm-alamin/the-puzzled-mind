@@ -40,7 +40,7 @@ const MyToys = () => {
 
   return (
     <div className="flex flex-col min-h-[200px] my-20">
-      <div className="my-2  sm:-max-6 lg:-mx-8">
+      <div className="my-2 overflow-x-auto sm:-max-6 lg:-mx-8">
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
           <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
             <h3 className="text-center py-2 px-2 rounded bg-indigo-50 text-indigo-500 text-xl font-medium tracking-widest mx-auto">My Added Toys</h3>

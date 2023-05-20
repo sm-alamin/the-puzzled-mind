@@ -50,7 +50,7 @@ const ShopByCategory = () => {
               {toys
                 .filter((toy) => toy.subCategory === subcategory)
                 .map((toy) => (
-                  <div className="grid grid-cols-3 mb-36" key={toy._id}>
+                  <div className="grid lg:grid-cols-3 mb-36" key={toy._id}>
                     <div className="w-full shadow-custom">
                       <div className="bg-white hover:bg-slate-300 rounded-lg h-72 p-2  hover:shadow-xl transition duration-300">
                         <figure className="mb-2">
