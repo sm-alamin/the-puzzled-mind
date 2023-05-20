@@ -116,9 +116,9 @@ const MyToys = () => {
                     </td>
                     <td className="px-6 py-4 whitespace-normal text-sm font-medium text-center hover:text-gray-600">
                       <div className="text-sm text-blue-400 text-center flex gap-5">
-                        <button >
+                        <Link to={`/all-toys/${toy._id}`}>
                           <FaRegEdit className="font-bold text-3xl cursor-pointer" />{" "}
-                        </button>
+                        </Link>
                         <button onClick={() => manageDelete(toy._id)}>
                           <FaRegTrashAlt className="font-bold text-red-400 text-3xl cursor-pointer" />{" "}
                         </button>
