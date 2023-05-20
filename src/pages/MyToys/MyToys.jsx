@@ -10,7 +10,7 @@ const MyToys = () => {
   const [filteredToys, setFilteredToys] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/all-toys")
+    fetch("https://the-puzzled-mind-server.vercel.app/all-toys")
       .then((response) => response.json())
       .then((data) => {
         const filtered = data.filter(toy => toy.sellerEmail == user?.email);
@@ -22,7 +22,7 @@ const MyToys = () => {
   const manageDelete = (id)=> {
     const confirmation = confirm("Are you sure to delete")
     if(confirmation) {
-      fetch(`http://localhost:5000/all-toys/${id}`, {
+      fetch(`https://the-puzzled-mind-server.vercel.app/all-toys/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

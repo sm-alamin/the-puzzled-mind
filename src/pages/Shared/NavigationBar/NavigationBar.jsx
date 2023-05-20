@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Avatar, Dropdown, Navbar } from 'flowbite-react';
+import { Tooltip } from "react-tooltip";
 import { NavLink } from 'react-router-dom';
 import './NavigationBar.css';
 import { AuthContext } from '../../../providers/AuthProvider';
@@ -18,16 +19,14 @@ const NavigationBar = () => {
   const renderUserSection = () => {
     if (user) {
       return (
-        <Dropdown arrowIcon={false} inline={true} label={<Avatar alt="User settings" img={user.photoURL} rounded={true} />}>
+        <Dropdown arrowIcon={false} inline={true} label={<Avatar data-tooltip-id="my-tooltip"
+        data-tooltip-content={user.displayName} alt="User settings" img={user?.photoURL} rounded={true} />}>
           <Dropdown.Header>
-            <span className="block text-sm">{user.displayName}</span>
-            <span className="block truncate text-sm font-medium">{user.email}</span>
+            <span className="block text-sm">{user?.displayName}</span>
+            <span className="block truncate text-sm font-medium">{user?.email}</span>
           </Dropdown.Header>
-          <Dropdown.Item>Dashboard</Dropdown.Item>
-          <Dropdown.Item>Settings</Dropdown.Item>
-          <Dropdown.Item>Earnings</Dropdown.Item>
           <Dropdown.Divider />
-          <Dropdown.Item onClick={handleLogOut}>Sign out</Dropdown.Item>
+          <Dropdown.Item onClick={handleLogOut}>Logout</Dropdown.Item>
         </Dropdown>
       );
     } else {
@@ -91,6 +90,10 @@ const NavigationBar = () => {
           Blogs
         </NavLink>
       </Navbar.Collapse>
+      <Tooltip
+          style={{ color: "white", background: "blue" }}
+          id="my-tooltip"
+        />
     </Navbar>
   );
 };
