@@ -13,7 +13,7 @@ const EditMyToy = () => {
     const {id} = useParams();
     console.log(id)
     useEffect(()=> {
-        fetch(`http://localhost:5000/all-toys/${id}`)
+        fetch(`https://the-puzzled-mind-server.vercel.app/all-toys/${id}`)
         .then(res=>res.json())
         .then(data=> {
             setToyInfo({
@@ -38,7 +38,7 @@ const EditMyToy = () => {
         };
         console.log(toyInfo);
     
-        fetch(`http://localhost:5000/all-toys/${id}`,{
+        fetch(`https://the-puzzled-mind-server.vercel.app/all-toys/${id}`,{
           method: 'PATCH', 
                 headers: {
                     'content-type': 'application/json'

@@ -7,7 +7,7 @@ const AllToy = () => {
   const [allToys, setAllToys] = useState([]);
   const [filteredToys, setFilteredToys] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/all-toys")
+    fetch("https://the-puzzled-mind-server.vercel.app/all-toys")
       .then((response) => response.json())
       .then((data) => {
         setAllToys(data);

@@ -11,7 +11,7 @@ const ShopByCategory = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/toys-by-subcategory/${subcategories[activeTab]}`);
+        const response = await fetch(`https://the-puzzled-mind-server.vercel.app/toys-by-subcategory/${subcategories[activeTab]}`);
         const data = await response.json();
         console.log(data);
         setToys(data);

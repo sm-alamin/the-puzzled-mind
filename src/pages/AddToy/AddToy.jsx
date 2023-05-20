@@ -35,7 +35,7 @@ const AddToy = () => {
     };
     console.log(toyInfo);
 
-    fetch('http://localhost:5000/add-toy',{
+    fetch('https://the-puzzled-mind-server.vercel.app/add-toy',{
       method: 'POST', 
             headers: {
                 'content-type': 'application/json'
