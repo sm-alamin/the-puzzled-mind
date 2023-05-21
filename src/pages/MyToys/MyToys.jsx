@@ -11,22 +11,22 @@ const MyToys = () => {
   const [sortBy, setSortBy] = useState("");
 
   const handleSortAscending = () => {
-    setSortBy("asc"); // Set the sorting option to ascending
+    setSortBy("asc");
   };
 
   const handleSortDescending = () => {
-    setSortBy("desc"); // Set the sorting option to descending
+    setSortBy("desc");
   };
 
   useEffect(() => {
-    fetchToys(); // Fetch toys when component mounts
-  }, []); // Empty dependency array to fetch toys only once
+    fetchToys();
+  }, []);
 
   useEffect(() => {
     if (sortBy) {
-      fetchToys(); // Fetch toys when sortBy changes
+      fetchToys();
     }
-  }, [sortBy]); // Include sortBy as a dependency
+  }, [sortBy]);
 
   const fetchToys = () => {
     fetch(
@@ -34,8 +34,13 @@ const MyToys = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        setMyToys(data);
-        setFilteredToys(data);
+        console.log(data)
+        const filteredData = data.filter((toy) => toy.sellerEmail === user?.email);
+        setMyToys(filteredData);
+        setFilteredToys(filteredData);
+      })
+      .catch((error) => {
+        console.log("Error fetching toys:", error);
       });
   };
 
@@ -54,10 +59,12 @@ const MyToys = () => {
             setMyToys(remaining);
             setFilteredToys(remaining);
           }
+        })
+        .catch((error) => {
+          console.log("Error deleting toy:", error);
         });
     }
   };
-
 
   return (
     <div className="flex flex-col min-h-[200px] my-20">

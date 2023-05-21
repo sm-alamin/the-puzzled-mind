@@ -3,12 +3,16 @@ import app from "../../firebase/firebase.config";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { BsGoogle } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+
 
 const Login = () => {
   const [user, setUser] = useState(null);
   const auth = getAuth(app);
   const { signIn, signInWithGoogle } = useContext(AuthContext);
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/'
+  const navigate = useNavigate();
 
   // Custom Login
   const handleLogin = (event) => {
@@ -23,6 +27,7 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        navigate(from, {replace:true})
       })
       .catch((error) => {
         console.log(error.message);
@@ -33,6 +38,7 @@ const Login = () => {
     signInWithGoogle()
       .then((result) => {
         console.log(result.user);
+        navigate(from, {replace:true})
       })
       .catch((error) => console.log(error));
   };
