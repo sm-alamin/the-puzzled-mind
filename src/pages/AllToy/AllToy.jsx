@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import SingleToy from "./SingleToy";
 import ToySearch from "../Search/ToySearch";
 

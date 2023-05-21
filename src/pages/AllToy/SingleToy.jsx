@@ -31,7 +31,7 @@ const SingleToy = ({ toy }) => {
           </td>
           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-center hover:scale-125 hover:-skew-x-12 hover:text-gray-600">
             <div className="text-sm text-blue-400 text-center">
-              <Link to={`/toy-details/:${_id}`}>Details</Link>
+              <Link to={`/toy-details/${_id}`}>Details</Link>
             </div>
           </td>
         </tr>

@@ -31,19 +31,19 @@ const EditMyToy = () => {
         const availableQuantity = form.quantity.value;
         const description = form.description.value;
     
-        const toyInfo = {
+        const updatedToyInfo  = {
           price: price,
           availableQuantity: availableQuantity,
           description: description,
         };
-        console.log(toyInfo);
+        console.log(updatedToyInfo);
     
         fetch(`https://the-puzzled-mind-server.vercel.app/all-toys/${id}`,{
           method: 'PATCH', 
                 headers: {
                     'content-type': 'application/json'
                 }, 
-            body:JSON.stringify(toyInfo)
+            body:JSON.stringify(updatedToyInfo)
         })
         .then(res=> res.json())
         .then(data=> {
