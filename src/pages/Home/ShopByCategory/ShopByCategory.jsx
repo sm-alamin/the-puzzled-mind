@@ -53,46 +53,48 @@ const ShopByCategory = () => {
         {toys.length > 0 ? (
           subcategories.map((subcategory, index) => (
             <TabPanel key={index}>
-              {toys
-                .filter((toy) => toy.subCategory === subcategory)
-                .map((toy) => (
-                  <div className="grid lg:grid-cols-3 mb-36" key={toy._id}>
-                    <div className="w-full shadow-custom">
-                      <div className="bg-white hover:bg-slate-300 rounded-lg h-72 p-2  hover:shadow-xl transition duration-300">
-                        <figure className="mb-2">
-                          <img
-                            src={toy.photoUrl}
-                            alt=""
-                            className="h-64 ml-auto mr-auto"
-                          />
-                        </figure>
-                        <div className="rounded-lg p-4 bg-slate-400 flex flex-col">
-                          <div>
-                            <h5 className="text-white text-2xl font-bold leading-none">
-                              {toy.toyName}
-                            </h5>
-                          </div>
-                          <div className="flex justify-between items-center">
-                            <div className="text-lg text-white font-light">
-                              $ {toy.price}
+              <div className="grid lg:grid-cols-3 gap-6 mb-36">
+                {toys
+                  .filter((toy) => toy.subCategory === subcategory)
+                  .map((toy) => (
+                    <div key={toy._id}>
+                      <div className="w-full shadow-custom">
+                        <div className="bg-white hover:bg-slate-300 rounded-lg h-72 p-2  hover:shadow-xl transition duration-300">
+                          <figure className="mb-2">
+                            <img
+                              src={toy.photoUrl}
+                              alt=""
+                              className="h-64 ml-auto mr-auto"
+                            />
+                          </figure>
+                          <div className="rounded-lg p-4 bg-slate-400 flex flex-col">
+                            <div>
+                              <h5 className="text-white text-2xl font-bold leading-none">
+                                {toy.toyName}
+                              </h5>
                             </div>
-                            <div className="flex justify-center ms-5">
-                              <Rating
-                                style={{ maxWidth: 120 }}
-                                value={toy.rating}
-                                readOnly
-                              />
-                              <span className="ms-5 text-white">{toy.rating}</span>
-                            </div>
-                            <div className="rounded-full bg-purple-900 text-white hover:bg-slate-300 hover:text-purple-900 hover:shadow-xl focus:outline-none w-16 h-16 flex justify-center ml-auto items-center transition duration-300 cursor-pointer">
-                              <Link to={`/toy-details/${toy._id}`}>Details</Link>
+                            <div className="flex justify-between items-center">
+                              <div className="text-lg text-white font-light">
+                                $ {toy.price}
+                              </div>
+                              <div className="flex justify-center ms-5">
+                                <Rating
+                                  style={{ maxWidth: 120 }}
+                                  value={toy.rating}
+                                  readOnly
+                                />
+                                <span className="ms-5 text-white">{toy.rating}</span>
+                              </div>
+                              <div className="rounded-full bg-purple-900 text-white hover:bg-slate-300 hover:text-purple-900 hover:shadow-xl focus:outline-none w-16 h-16 flex justify-center ml-auto items-center transition duration-300 cursor-pointer">
+                                <Link to={`/toy-details/${toy._id}`}>Details</Link>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+              </div>
             </TabPanel>
           ))
         ) : (
