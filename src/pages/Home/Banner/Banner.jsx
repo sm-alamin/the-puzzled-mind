@@ -14,11 +14,11 @@ const Banner = () => {
             <div className="w-full text-center px-5">
               <div className="bg-slate-300 rounded p-5 w-60 text-center font-bold relative mx-auto">
                 <h3 className="font-bold">Beautiful toys</h3>
-                <div className="bg-yellow-500 text-white font-semibold py-1 px-2 rounded-tl-md rounded-bl-md absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 rotate-45">
+                <div className="bg-indigo-500 text-white font-semibold py-1 px-2 rounded-tl-md rounded-bl-md absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 rotate-45">
                   New!
                 </div>
               </div>
-              <h3 className="text-pink-700 text-3xl font-bold pt-5">Latest Collections</h3>
+              <h3 className="text-indigo-700 text-3xl font-bold pt-5">Latest Collections</h3>
               <p className="text-gray-400">
                 Engage your mind with our captivating puzzled toy collection.
                 Explore intricate designs and challenge your problem-solving
@@ -38,11 +38,11 @@ const Banner = () => {
             <div className="w-full text-center px-5">
               <div className="bg-slate-300 rounded p-5 w-60 text-center font-bold relative mx-auto">
                 <h3 className="font-bold">Beautiful toys</h3>
-                <div className="bg-yellow-500 text-white font-semibold py-1 px-2 rounded-tl-md rounded-bl-md absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 rotate-45">
+                <div className="bg-indigo-500 text-white font-semibold py-1 px-2 rounded-tl-md rounded-bl-md absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 rotate-45">
                   New!
                 </div>
               </div>
-              <h3 className="text-pink-700 text-3xl font-bold pt-5">Latest Collections</h3>
+              <h3 className="text-indigo-700 text-3xl font-bold pt-5">Latest Collections</h3>
               <p className="text-gray-400">
                 Engage your mind with our captivating puzzled toy collection.
                 Explore intricate designs and challenge your problem-solving
@@ -62,11 +62,11 @@ const Banner = () => {
             <div className="w-full text-center px-5">
               <div className="bg-slate-300 rounded p-5 w-60 text-center font-bold relative mx-auto">
                 <h3 className="font-bold">Beautiful toys</h3>
-                <div className="bg-yellow-500 text-white font-semibold py-1 px-2 rounded-tl-md rounded-bl-md absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 rotate-45">
+                <div className="bg-indigo-500 text-white font-semibold py-1 px-2 rounded-tl-md rounded-bl-md absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 rotate-45">
                   New!
                 </div>
               </div>
-              <h3 className="text-pink-700 text-3xl font-bold pt-5">Latest Collections</h3>
+              <h3 className="text-indigo-700 text-3xl font-bold pt-5">Latest Collections</h3>
               <p className="text-gray-400">
                 Engage your mind with our captivating puzzled toy collection.
                 Explore intricate designs and challenge your problem-solving
