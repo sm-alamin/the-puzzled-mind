@@ -1,47 +1,67 @@
-import './Register.css'
+import "./Register.css";
 import { AuthContext } from "../../providers/AuthProvider";
-import { useContext, useState } from 'react';
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 const Register = () => {
-    const { createUser,logOut } = useContext(AuthContext);
-    const [user, setUser] = useState(null);
-    const [error, setError] = useState("");
-    const handleRegistration = (event)=> {
-        event.preventDefault();
-
-        const form = event.target;
-        const displayName = form.name.value;
-        const email = form.email.value;
-        const photoURL = form.photo.value;
-        const password = form.password.value;
-        console.log(displayName, email, password, photoURL);
+  const { createUser, logOut } = useContext(AuthContext);
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
 
+  const handleRegistration = (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+    const displayName = form.name.value;
+    const email = form.email.value;
+    const photoURL = form.photo.value;
+    const password = form.password.value;
+    const confirm_password = form.confirm_password.value;
+    console.log(displayName, email, password, confirm_password, photoURL);
+
+    // validation
+    if (password !== confirm_password) {
+      setError("Your password did not match");
+      return;
+    } else if (password.length < 6) {
+      setError("password must be 6 characters or longer");
+      return;
+    }
     // Create user on firebase
     createUser(email, password, displayName, photoURL)
-    .then((result) => {
-      const createdUser = result.user;
-      console.log(createdUser);
-      setUser(createdUser)
-      logOut();
-      form.reset();
+      .then((result) => {
+        const createdUser = result.user;
+        console.log(createdUser);
+        setUser(createdUser);
+        logOut();
+        form.reset();
+        navigate("/login");
+        Swal.fire({
+          title: 'Success!',
+          text: 'You have successfully registration',
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        })
+      })
       
-    })
-    .catch((error) => {
-      console.log(error);
-      setError(error.message);
-    });
-};
+      .catch((error) => {
+        console.log(error);
+        setError(error.message);
+      });
+  };
   return (
     <div className="min-h-screen flex items-center justify-around gap-20  py-4 px-4 sm:px-6 lg:px-8">
-      <div className='w-full bg-register h-screen flex justify-center items-center'>
-            <img src="/puzzled.png" alt="" />
+      <div className="w-full bg-register h-screen flex justify-center items-center">
+        <img src="/puzzled.png" alt="" />
       </div>
       <div className="max-w-md w-full space-y-8 shadow-custom px-6">
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Create a new account
           </h2>
-          <p className="text-error">{error}</p>
+          <p className="text-red-400">{error}</p>
         </div>
         <form onSubmit={handleRegistration} className="mt-8 space-y-6">
           <div className="rounded-md shadow-sm space-y-4">
@@ -84,11 +104,25 @@ const Register = () => {
                 autoComplete="new-password"
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm field-input field-input"
-                placeholder="Password"
+                placeholder="password"
               />
             </div>
             <div>
               <label htmlFor="password" className="sr-only">
+                Confirm Password
+              </label>
+              <input
+                id="confirm_password"
+                name="confirm_password"
+                type="password"
+                autoComplete="new-password"
+                required
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm field-input field-input"
+                placeholder="Type your password again"
+              />
+            </div>
+            <div>
+              <label htmlFor="photo" className="sr-only">
                 Photo Url
               </label>
               <input
@@ -127,16 +161,17 @@ const Register = () => {
           </div>
           <div className="flex items-center justify-center">
             <span className="border-b border-gray-300 w-1/4"></span>
-            <span className="text-gray-500 mx-2">Already have an account?{" "}</span>
+            <span className="text-gray-500 mx-2">
+              Already have an account?{" "}
+            </span>
             <span className="border-b border-gray-300 w-1/4"></span>
           </div>
-          
+
           <div className="flex justify-center">
             <p className="text-gray-600">
-            <a href="#" className="text-blue-500 hover:text-blue-700">
+              <a href="#" className="text-blue-500 hover:text-blue-700">
                 Sign In
               </a>
-             
             </p>
           </div>
         </form>

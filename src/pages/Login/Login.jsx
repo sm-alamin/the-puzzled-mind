@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { BsGoogle } from "react-icons/bs";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 
 const Login = () => {
@@ -28,9 +29,20 @@ const Login = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
         navigate(from, {replace:true})
+        Swal.fire({
+          title: 'Success!',
+          text: 'You have successfully logged in',
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        })
       })
       .catch((error) => {
-        console.log(error.message);
+        Swal.fire({
+          title: 'Error!',
+          text: 'Give Correct Information',
+          icon: error.message,
+          confirmButtonText: 'Cool'
+        })
       });
   };
   //Google login
@@ -39,8 +51,21 @@ const Login = () => {
       .then((result) => {
         console.log(result.user);
         navigate(from, {replace:true})
+        Swal.fire({
+          title: 'Success!',
+          text: 'You have successfully logged in',
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        })
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        Swal.fire({
+          title: 'Error!',
+          text: 'Give Correct Information',
+          icon: error.message,
+          confirmButtonText: 'Cool'
+        })
+      });
   };
   return (
     <div className="min-h-screen flex items-center justify-around gap-20 bg-[#e8eaec] py-12 px-4 sm:px-6 lg:px-8">
